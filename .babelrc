@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    [
+      "import",
+      {
+        "libiaryName": "antd",
+        "libiaryDirectory": "es",
+        "style": "css"
+      }
+    ],
+    [
+      "transform-runtime",
+      {
+        "helpers": false,  //不会重新加载helper函数，减少代码体积
+        "polyfill": false,
+        "regenerator": true, //防止污染全局变量
+        "modulename": "babel-runtime"  //压缩文件
+      }
+    ],
+    [ "transform-decorators-legacy" ]
+  ]
+}

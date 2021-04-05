@@ -8,6 +8,22 @@
  */
 import './index.less';
 function component () {
+    const user = {
+        firstName: "Sebastian",
+        lastName: "McKenzie",
+        getFullName: () => {
+            console.log('1', this)
+          // whoops! `this` doesn't actually reference `user` here
+        //   return this.firstName + " " + this.lastName;
+        },
+        // use the method shorthand in objects
+        getFullName2() {
+          return this.firstName + " " + this.lastName;
+        }
+      };
+      user.getFullName();
+     console.log(user.getFullName2()) 
+
     var element = document.createElement('div');
 
     element.classList.add('changeColor');
