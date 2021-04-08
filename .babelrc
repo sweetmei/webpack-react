@@ -1,5 +1,6 @@
 {
   "presets": [
+    "es2015",
     "env",
     "react",
     "stage-0"
@@ -8,8 +9,8 @@
     [
       "import",
       {
-        "libiaryName": "antd",
-        "libiaryDirectory": "es",
+        "libraryName": "antd",
+        "libraryDirectory": "es",
         "style": "css"
       }
     ],
@@ -19,7 +20,7 @@
         "helpers": false,  //不会重新加载helper函数，减少代码体积
         "polyfill": false,
         "regenerator": true, //防止污染全局变量
-        "modulename": "babel-runtime"  //压缩文件
+        "moduleName": "babel-runtime"  //压缩文件
       }
     ],
     [ "transform-decorators-legacy" ]

@@ -1,35 +1,21 @@
 /*
  * @Author: your name
- * @Date: 2021-04-02 14:25:43
- * @LastEditTime: 2021-04-02 17:25:00
+ * @Date: 2021-04-07 10:57:54
+ * @LastEditTime: 2021-04-07 15:41:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\src\index.js
  */
-import './index.less';
-function component () {
-    const user = {
-        firstName: "Sebastian",
-        lastName: "McKenzie",
-        getFullName: () => {
-            console.log('1', this)
-          // whoops! `this` doesn't actually reference `user` here
-        //   return this.firstName + " " + this.lastName;
-        },
-        // use the method shorthand in objects
-        getFullName2() {
-          return this.firstName + " " + this.lastName;
-        }
-      };
-      user.getFullName();
-     console.log(user.getFullName2()) 
+import React from 'react';
+import ReactDom from 'react-dom';
+import { Provider  } from "react-redux";
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import history from './utils/history';
+import storeTree from "./store";
+import APP from " ./APP";
+const store = createStore(storeTree, applyMiddleware(thunk));
 
-    var element = document.createElement('div');
-
-    element.classList.add('changeColor');
-
-    element.innerHTML = '阿斯顿撒扩大是';
-
-    return element
-}
-document.body.appendChild(component())
+ReactDom.render(<Provider store={store}>
+    <APP history = {history}/>
+</Provider>, document.getElementById('app'))
