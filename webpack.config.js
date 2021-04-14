@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-04-02 14:21:20
- * @LastEditTime: 2021-04-08 11:10:15
+ * @LastEditTime: 2021-04-14 10:27:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\webpack.config.js
  */
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
@@ -14,6 +15,12 @@ module.exports = {
   output: {
     filename: 'bundle.js',  //编译得文件名称
     path: path.resolve(__dirname, 'dist'), //编译得文件地址
+  },
+  resolve:{
+    alias:{
+      '@pages': path.resolve(__dirname,'src/pages'),
+      '@utils': path.resolve(__dirname,'src/utils')
+    }
   },
   // 启用相应模式（development,production）下的webpack内置的优化
   mode: 'development',
@@ -28,11 +35,12 @@ module.exports = {
   // 编译后映射到源代码，方便错误调试
   devtool: 'inline-source-map',
   plugins: [
-    new CleanWebpackPlugin(),  //
+    // new CleanWebpackPlugin(),  //
     new HtmlWebpackPlugin({
       title: 'project-test', //这个显示是html文件得title
     }),
-
+    new webpack.HotModuleReplacementPlugin()
+ 
   ],
   // webpack 自身只能理解js,引入loader可以将所有类型的文件转换为webpack可以识别的有效模块。
   // loader有两个目标， 
@@ -48,6 +56,7 @@ module.exports = {
       },
     },
     rules: [
+      {},
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
@@ -72,6 +81,18 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          }
+        }
+      }
     ]
   }
 

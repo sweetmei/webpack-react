@@ -1,28 +1,52 @@
+// {
+//   "presets": [
+//     "es2015",
+//     "env",
+//     "react",
+//     "stage-0"
+//   ],
+//   "plugins": [
+//     [
+//       "import",
+//       {
+//         "libraryName": "antd",
+//         "libraryDirectory": "es",
+//         "style": "css"
+//       }
+//     ],
+//     [
+//       "transform-runtime",
+//       {
+//         "helpers": false,  //不会重新加载helper函数，减少代码体积
+//         "polyfill": false,
+//         "regenerator": true, //防止污染全局变量
+//         "moduleName": "babel-runtime"  //压缩文件
+//       }
+//     ],
+//     [ "transform-decorators-legacy" ]
+//   ]
+// }
+
+ 
 {
-  "presets": [
-    "es2015",
-    "env",
-    "react",
-    "stage-0"
-  ],
-  "plugins": [
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
-        "style": "css"
-      }
-    ],
-    [
-      "transform-runtime",
-      {
-        "helpers": false,  //不会重新加载helper函数，减少代码体积
-        "polyfill": false,
-        "regenerator": true, //防止污染全局变量
-        "moduleName": "babel-runtime"  //压缩文件
-      }
-    ],
-    [ "transform-decorators-legacy" ]
-  ]
+    "presets": ["@babel/env", "@babel/react", "stage-0"],
+    "plugins": [
+        [
+            "import", {
+                "libraryName": "antd",
+                "libraryDirectory": "es",
+                "style": "css"
+            }
+        ],
+        [
+            "transform-runtime",
+            {
+              "helpers": false,
+              "polyfill": false,
+              "regenerator": true,
+              "moduleName": "babel-runtime"
+            }
+        ],
+        ["transform-decorators-legacy"]
+    ]
 }
