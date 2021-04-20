@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-07 10:57:48
- * @LastEditTime: 2021-04-08 14:36:57
+ * @LastEditTime: 2021-04-14 14:17:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\src\APP.js
@@ -14,7 +14,7 @@ import {
 import PropTypes from 'prop-types';
 import TodoList from './pages/todolist'
 import TodoDetail from './pages/tododetail'
-console.log('app')
+console.log('app', React)
 const App = (
     ({history}) => {
         return (<Router history={history}>
