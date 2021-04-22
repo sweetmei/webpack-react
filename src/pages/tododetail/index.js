@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-07 10:54:44
- * @LastEditTime: 2021-04-08 14:34:34
+ * @LastEditTime: 2021-04-21 15:19:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\src\pages\tododetail\index.js
@@ -9,11 +9,12 @@
 import React from 'react';
 
 
-export default class TodoList extends React.Component{
+ class TodoList extends React.Component{
 
     constructor( props ) {
-        super( props )
         console.log(546546460)
+        super( props )
+     
     }
 
     render(){
@@ -21,3 +22,4 @@ export default class TodoList extends React.Component{
     }
 
 }
+export default TodoList

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-02 14:21:20
- * @LastEditTime: 2021-04-14 16:15:40
+ * @LastEditTime: 2021-04-22 13:35:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\webpack.config.js
@@ -56,7 +56,6 @@ module.exports = {
       },
     },
     rules: [
-      {},
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
