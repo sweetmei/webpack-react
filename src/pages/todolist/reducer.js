@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-21 15:22:42
- * @LastEditTime: 2021-04-21 15:23:04
+ * @LastEditTime: 2021-04-22 17:18:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\src\pages\todolist\reducer.js
@@ -20,7 +20,6 @@ const todoListReducer = (state=initState, action) => {
         case 'LIST_DATA':
             return {
                 ...state,
-                ...action.payload,
                 listData: action.payload
             };
         default: 
