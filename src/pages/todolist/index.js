@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-07 10:54:18
- * @LastEditTime: 2021-04-22 17:24:47
+ * @LastEditTime: 2021-04-23 15:22:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\src\pages\todolist\index.js
@@ -10,12 +10,18 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { getTodoList } from './action';
 import { Table } from 'antd'
-
-@connect(state => state,
-	{
-		getTodoList
-	}
-)
+/**
+ * connect 参数
+ * mapStateToProps(state, ownprops)=> state  state是整个redux得值，而ownprops是这个组件内得props
+ * mapDispatchToProps  如果是对象得话，那么将会和组件得props绑定到一起,进行调用；如果是个函数
+ */
+const mapStateToProps = state=>state;
+const mapDispatchToProps = (dispatch)=>{
+	return {
+		todoListActions: (...args)=>dispatch(getTodoList()),
+	 }
+}
+@connect(mapStateToProps, mapDispatchToProps )
 class TodoList extends React.Component {
 
 	constructor(props) {
@@ -25,7 +31,8 @@ class TodoList extends React.Component {
 
 
 	componentDidMount() {
-		this.props.getTodoList();
+		console.log(this.props)
+		this.props.todoListActions();
 
 	}
 	render() {
