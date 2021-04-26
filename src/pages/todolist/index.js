@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-07 10:54:18
- * @LastEditTime: 2021-04-23 15:22:00
+ * @LastEditTime: 2021-04-26 15:29:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \react-webpack\src\pages\todolist\index.js
@@ -9,7 +9,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { getTodoList } from './action';
-import { Table } from 'antd'
+import { globalAction } from '../../models/globalAction'
+import { Table, Button } from 'antd'
 /**
  * connect 参数
  * mapStateToProps(state, ownprops)=> state  state是整个redux得值，而ownprops是这个组件内得props
@@ -17,8 +18,12 @@ import { Table } from 'antd'
  */
 const mapStateToProps = state=>state;
 const mapDispatchToProps = (dispatch)=>{
+	console.log()
 	return {
-		todoListActions: (...args)=>dispatch(getTodoList()),
+		todoListActions: (...args)=>dispatch(getTodoList({page:10},(data)=>{
+			console(data)
+		})),
+		globalActionFlag: (...args)=>dispatch(globalAction(...args))
 	 }
 }
 @connect(mapStateToProps, mapDispatchToProps )
@@ -28,15 +33,20 @@ class TodoList extends React.Component {
 		super(props)
 	}
 
+	state = {
+		flag: false
+	}
 
 
 	componentDidMount() {
-		console.log(this.props)
 		this.props.todoListActions();
-
+	}
+	axiosGlobal = () => {
+		this.props.globalActionFlag(this.props.globalReducer.globalFlag);
 	}
 	render() {
-		let { todoListReducer: { listData } } = this.props;
+		console.log(this.props)
+		let { todoListReducer: { listData }, } = this.props;
 		const columns = [{
 			title: '名字',
 			dataIndex: 'name',
@@ -52,6 +62,7 @@ class TodoList extends React.Component {
 			align: 'center'
 		}]
 		return (<div>
+			<Button type='primary' onClick={e=>this.axiosGlobal()}>按钮</Button>
 			<Table
 				dataSource={listData}
 				columns={columns}
